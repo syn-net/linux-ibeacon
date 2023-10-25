@@ -1,6 +1,8 @@
 linux-ibeacon
 =============
 
+**NOTE**: This is a fork of the original repository at [dburr/linux-ibeacon](https://github.com/dburr/linux-ibeacon).
+
 This is a Python script that creates an Apple® [iBeacon®][IBEACON]-compatible
 [Bluetooth LE beacon][BTBEACONS] using a computer running Linux and a Bluetooth LE adapter.
 
