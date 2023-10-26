@@ -22,7 +22,10 @@ tools.
 On most Linux distributions, BlueZ can be easily installed from your distribution's package
 manager.  E.g., for Debian and Debian derivatives (Ubuntu, etc.):
 
-`sudo apt-get install bluetooth bluez-utils blueman`
+- [Debian](https://debian.org) Linux derived, such as [Ubuntu](https://ubuntu.com) Linux 
+    * `sudo apt-get install bluetooth bluez-utils blueman`
+- [Arch Linux](https://archlinux.org) derived, such as [Manjaro Linux](https://manjaro.org)
+    * `sudo pamac install  bluez-utils-compat blueman`
 
 Your computer must also have a Bluetooth adapter (either built-in or USB) that is compatible with
 the [Bluetooth 4.0 LE][BLE] standard.  To test whether your adapter is LE-compatible, issue the
