@@ -82,8 +82,7 @@ def check_for_sudo():
 # kind of a cheaty way of doing this, we just grep the output of
 # `hcitool list' to make sure the passed-in device string is present
 def is_valid_device(device):
-  #return not os.system("hciconfig list 2>/dev/null | grep -q ^%s:" % device)
-  return not os.system("hciconfig -a 2>/dev/null | grep -q ^%s:" % device)
+  return not os.system("hciconfig %s 2>/dev/null | grep -q ^%s:" % (device, device))
 
 ###############################################################################
 
@@ -159,7 +158,7 @@ def main(argv=None):
             process_command("hciconfig %s down" % device)
             return 0
           else:
-            print("Error: no such device: %s (try `hciconfig list')" % device)
+            print("Error: no such device: %s (try `hciconfig -a')" % device)
             return 1
         else:
           return 1
@@ -201,9 +200,9 @@ def main(argv=None):
 
     # make sure we are using a valid hci device
     if not simulate and not is_valid_device(device):
-      print("Error: no such device: %s (try `hciconfig list')" % device)
+      print("Error: no such device: %s (try `hciconfig -a')" % device)
       return 1
- 
+
     # print status info
     print("Advertising on %s with:" % device)
     print("       uuid: 0x%s" % uuid)
@@ -220,7 +219,7 @@ def main(argv=None):
     # pipe stdout to /dev/null to get rid of the ugly "here's what I did"
     # message from hcitool
     process_command("hcitool -i %s cmd 0x08 0x0008 1E 02 01 1A 1A FF 4C 00 02 15 %s %s %s %s 00 >/dev/null" % (device, split_uuid, split_major_hex, split_minor_hex, power_hex))
- 
+
   except(Usage, err):
     print >> sys.stderr, err.msg
     print >> sys.stderr, "for help use --help"
